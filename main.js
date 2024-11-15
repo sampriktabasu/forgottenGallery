@@ -27,13 +27,13 @@ scene.add(sunLight);
 const geometry = new THREE.BoxGeometry(1, 1, 1); // BoxGeometry is the shape of the object
 const material = new THREE.MeshBasicMaterial({ color: 'blue' }); // MeshBasicMaterial is the look of the object (color or texture)
 const cube = new THREE.Mesh(geometry, material); // create cube with geometry and material
-scene.add(cube); // add cube to scene
+//scene.add(cube); // add cube to scene
 // Controls
 // Event Listenet for when we press the keys
 document.addEventListener('keydown', onKeyDown, false);
 // Texture of the floor
 const textureLoader = new THREE.TextureLoader();
-const floorTexture = textureLoader.load('img/Floor.jpg');
+const floorTexture = textureLoader.load('textures/floor.jpg');
 floorTexture.wrapS = THREE.RepeatWrapping;
 floorTexture.wrapT = THREE.RepeatWrapping;
 floorTexture.repeat.set(20, 20);
@@ -56,15 +56,22 @@ scene.add(wallGroup); // add the group to the scene, then any child added to the
 // Front Wall
 const frontWall = new THREE.Mesh( // Mesh class that has geometry and material inside
   new THREE.BoxGeometry(50, 20, 0.001), // geometry
-  new THREE.MeshLambertMaterial({ color: 'green' }) // Lambert material is for non-shiny surfaces
+  new THREE.MeshLambertMaterial({ color: 'BlanchedAlmond' }) // Lambert material is for non-shiny surfaces
 );
 frontWall.position.z = -20; // push the wall forward in the Z axis
+
+// Back Wall
+const backWall = new THREE.Mesh( // Mesh class that has geometry and material inside
+  new THREE.BoxGeometry(50, 20, 0.001), // geometry
+  new THREE.MeshLambertMaterial({ color: 'BlanchedAlmond' }) // Lambert material is for non-shiny surfaces
+);
+backWall.position.z = 20; // push the wall forward in the Z axis
 // Left Wall
 const leftWall = new THREE.Mesh( // Mesh class that has geometry and material inside
   new THREE.BoxGeometry(50, 20, 0.001), // geometry
   new THREE.MeshLambertMaterial({
     //  Lambert material is for non-shiny surfaces
-    color: 'red',
+    color: 'BlanchedAlmond',
   })
 );
 leftWall.rotation.y = Math.PI / 2; // this is 90 degrees
@@ -74,17 +81,19 @@ const rightWall = new THREE.Mesh( // Mesh class that has geometry and material i
   new THREE.BoxGeometry(50, 20, 0.001), // geometry
   new THREE.MeshLambertMaterial({
     // Lambert material is for non-shiny surfaces
-    color: 'yellow',
+    color: 'BlanchedAlmond',
   })
 );
 rightWall.position.x = 20;
 rightWall.rotation.y = Math.PI / 2; // this is 90 degrees
-wallGroup.add(frontWall, leftWall, rightWall);
+wallGroup.add(frontWall, leftWall, rightWall, backWall);
 // Loop through each wall and create the bounding box
 for (let i = 0; i < wallGroup.children.length; i++) {
   wallGroup.children[i].BBox = new THREE.Box3();
   wallGroup.children[i].BBox.setFromObject(wallGroup.children[i]);
 }
+
+/*
 // Create the ceiling
 const ceilingGeometry = new THREE.PlaneGeometry(50, 50); // BoxGeometry is the shape the object
 const ceilingMaterial = new THREE.MeshLambertMaterial({
@@ -94,6 +103,25 @@ const ceilingMaterial = new THREE.MeshLambertMaterial({
 const ceilingPlane = new THREE.Mesh(ceilingGeometry, ceilingMaterial); // create ceiling with geometry and material
 ceilingPlane.rotation.x = Math.PI / 2; // this is 90 degrees
 ceilingPlane.position.y = 12;
+scene.add(ceilingPlane);
+*/
+
+// Create the ceiling
+const textureLoader2 = new THREE.TextureLoader();
+const ceilingTexture = textureLoader2.load('textures/ceiling2.jpeg');
+ceilingTexture.wrapS = THREE.RepeatWrapping;
+ceilingTexture.wrapT = THREE.RepeatWrapping;
+ceilingTexture.repeat.set(20, 20);
+const ceilingGeometry = new THREE.PlaneGeometry(50, 50); // BoxGeometry is the shape the object
+const ceilingMaterial = new THREE.MeshLambertMaterial({
+  // Lambert material is for non-shiny surfaces
+  map: ceilingTexture, // the texture
+  side: THREE.DoubleSide,
+
+});
+const ceilingPlane = new THREE.Mesh(ceilingGeometry, ceilingMaterial); // create ceiling with geometry and material
+ceilingPlane.rotation.x = Math.PI / 2; // this is 90 degrees
+ceilingPlane.position.y = 10;
 scene.add(ceilingPlane);
 // Create a painting
 function createPainting(imageUrl, width, height, position) {
@@ -112,15 +140,64 @@ const painting1 = createPainting(
   '/artworks/0.jpg',
   10,
   5,
-  new THREE.Vector3(-10, 5, -19.99)
+  new THREE.Vector3(-10, 5, -19.99) // front wall painting
 );
 const painting2 = createPainting(
   '/artworks/1.jpg',
   10,
   5,
-  new THREE.Vector3(10, 5, -19.99)
+  new THREE.Vector3(10, 5, -19.99) // front wall painting
 );
-scene.add(painting1, painting2);
+
+//left wall
+const painting3 = createPainting(
+  '/artworks/2.jpg',
+  10,
+  5,
+  new THREE.Vector3(-19.99, 5, -10) // Left wall painting
+);
+painting3.rotation.y = Math.PI / 2;
+
+const painting4 = createPainting(
+  '/artworks/3.jpg',
+  10,
+  5,
+  new THREE.Vector3(-19.99, 5, 10) // Left wall painting
+);
+painting4.rotation.y = Math.PI / 2;
+
+
+const painting5 = createPainting(
+  '/artworks/4.jpg',
+  7,
+  9,
+  new THREE.Vector3(19.99, 3, -10) // Right wall painting
+);
+painting5.rotation.y = -Math.PI / 2;
+
+const painting6 = createPainting(
+  '/artworks/5.jpg',
+  10,
+  5,
+  new THREE.Vector3(19.99, 5, 10) // Right wall painting
+);
+painting6.rotation.y = -Math.PI / 2;
+
+// Add paintings to the back wall
+const painting7 = createPainting(
+  '/artworks/6.jpg',
+  10,
+  5,
+  new THREE.Vector3(-10, 5, 19.99) // Back wall painting 1
+);
+const painting8 = createPainting(
+  '/artworks/7.jpg',
+  10,
+  5,
+  new THREE.Vector3(10, 5, 19.99) // Back wall painting 2
+);
+
+scene.add(painting1, painting2, painting3, painting4, painting5, painting6, painting7, painting8);
 // function when a key is pressed, execute this function
 function onKeyDown(event) {
   let keycode = event.which;
@@ -134,16 +211,16 @@ function onKeyDown(event) {
   }
   // up arrow key
   else if (keycode === 38 || keycode === 87) {
-    camera.translateZ(-0.08);
+    camera.translateZ(-0.12);
   }
   // down arrow key
   else if (keycode === 40 || keycode === 83) {
-    camera.translateZ(0.08);
+    camera.translateZ(0.12);
   }
 }
 let render = function () {
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+  //cube.rotation.x += 0.01;
+  //cube.rotation.y += 0.01;
   controls.update();
   renderer.render(scene, camera); //renders the scene
   requestAnimationFrame(render);
