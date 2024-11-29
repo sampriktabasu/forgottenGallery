@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { addRoom } from './components/room.js';
+import { createHallway } from './components/hallway.js';
 import { addLights } from './components/lighting.js';
 import { addPaintings } from './components/paintings.js';
 import { setupControls } from './components/controls.js';
@@ -21,8 +22,9 @@ const controls = setupControls(camera, renderer.domElement);
 // Add Lights
 addLights(scene);
 
-// Add Room
+// Add Room and Hallway
 addRoom(scene);
+createHallway(scene);
 
 // Add Paintings
 addPaintings(scene);

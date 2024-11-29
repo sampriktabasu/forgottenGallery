@@ -9,13 +9,13 @@ export function setupControls(camera, domElement) {
     const keycode = event.which; // Get the key code
 
     if (keycode === 39 || keycode === 68) { // Right arrow key or 'D'
-      camera.translateX(-0.08);
+      camera.translateX(-1);
     } else if (keycode === 37 || keycode === 65) { // Left arrow key or 'A'
-      camera.translateX(0.08);
+      camera.translateX(1);
     } else if (keycode === 38 || keycode === 87) { // Up arrow key or 'W'
-      camera.translateZ(-0.12);
+      camera.translateZ(-1);
     } else if (keycode === 40 || keycode === 83) { // Down arrow key or 'S'
-      camera.translateZ(0.12);
+      camera.translateZ(1);
     }
   }
 

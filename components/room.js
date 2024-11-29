@@ -41,10 +41,17 @@ export function addRoom(scene) {
   wallGroup.add(leftWall);
 
   // Right Wall
-  const rightWall = new THREE.Mesh(new THREE.BoxGeometry(50, 20, 0.001), wallMaterial);
+  const rightWall = new THREE.Mesh(new THREE.BoxGeometry(15, 20, 0.001), wallMaterial);
   rightWall.rotation.y = Math.PI / 2;
   rightWall.position.x = 20;
+  rightWall.position.z = 15;
   wallGroup.add(rightWall);
+
+  const rightWall2 = new THREE.Mesh(new THREE.BoxGeometry(15, 20, 0.001), wallMaterial);
+  rightWall2.rotation.y = Math.PI / 2;
+  rightWall2.position.x = 20;
+  rightWall2.position.z = -15;
+  wallGroup.add(rightWall2);
 
   // Ceiling
   const ceilingTexture = textureLoader.load('textures/ceiling2.jpeg');
