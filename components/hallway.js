@@ -6,10 +6,10 @@ export function createHallway(scene) {
     const floorTexture = textureLoader.load('textures/floor.jpg');
     floorTexture.wrapS = THREE.RepeatWrapping;
     floorTexture.wrapT = THREE.RepeatWrapping;
-    floorTexture.repeat.set(20, 20);
+    floorTexture.repeat.set(19, 6.33);
 
     // Create the hallway floor geometry
-    const hallwayGeometry = new THREE.PlaneGeometry(45, 15); // Hallway dimensions
+    const hallwayGeometry = new THREE.PlaneGeometry(42.5, 15); // Hallway dimensions
     const hallwayMaterial = new THREE.MeshBasicMaterial({
         map: floorTexture,  // Reuse the floor texture
         side: THREE.DoubleSide
@@ -18,7 +18,7 @@ export function createHallway(scene) {
 
     // Position the hallway (adjust position relative to the room)
     hallwayFloor.rotation.x = Math.PI / 2; // Make it horizontal
-    hallwayFloor.position.set(45, -Math.PI, 0); // Adjust position to align with room
+    hallwayFloor.position.set(43.75, -Math.PI, 0); // Adjust position to align with room
 
     // Add the hallway to the scene
     scene.add(hallwayFloor);
@@ -58,7 +58,7 @@ export function createHallway(scene) {
     // Create the ceiling mesh and position it above the hallway floor
     const ceilingPlane = new THREE.Mesh(ceilingGeometry, ceilingMaterial);
     ceilingPlane.rotation.x = Math.PI / 2; // Rotate it to make it horizontal
-    ceilingPlane.position.set(47.5, 10, 0); // Position at room height
+    ceilingPlane.position.set(42.5, 10, 0); // Position at room height
 
     // Add ceiling to the scene
     scene.add(ceilingPlane);
