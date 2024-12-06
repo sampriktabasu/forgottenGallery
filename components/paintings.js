@@ -13,7 +13,9 @@ function createPainting(imageUrl, width, height, position, info, rotation = 0) {
     type: 'painting', // add a type property to the userData object so we can check if the object is a painting or not
     information: info, // add the painting info to the userData object. `data` is the current painting object in the forEach loop. `info` is a property of the painting object that holds the painting info
     pos: position,
-    rot: rotation
+    rot: rotation,
+    width: width,
+    height: height
   };
 
   return painting;
