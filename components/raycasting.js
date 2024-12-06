@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 //import { displayPaintingInfo } from './components/paintingInfoDisplay.js';
+import {displayPaintingInfo} from './paintingInfoModal.js';
 
 const mouse = new THREE.Vector2();
 // get raycaster library
@@ -21,8 +22,18 @@ function onClick(camera, paintings) {
   if (intersects.length > 0) {
     const painting = intersects[0].object;
     // open modal
-    console.log('Clicked painting:', painting.userData.information.title);
-    //displayPaintingInfo(painting.userData.information);
+    //console.log('Clicked painting:', painting.userData.information.title);
+    displayPaintingInfo(painting.userData.information);
+    const modalOverlay = document.getElementById('painting-modal-overlay');
+    const modalElement = document.getElementById('modal');
+    const closeModalButton = document.getElementById('closeModal');
+    closeModalButton.addEventListener('click', () => {
+        modalElement.style.display = 'none';
+        modalOverlay.style.display = 'none';
+      });
   }
 }
+
+  
+
 export { paintingClickHandling };
