@@ -27,7 +27,17 @@ export function addPaintings(scene) {
     { url: '/artworks/5.jpg', width: 10, height: 5, info: {title: 'Van Gogh', artist: 'Vincent van Gogh', description: 'This is one of the masterpieces by Vincent van Gogh, showcasing his unique style and emotional honesty.', year: '2021'}, position: { x: 19.99, y: 5, z: 14 }, rotation: -Math.PI / 2 },
     { url: '/artworks/6.jpg', width: 10, height: 5, info: {title: 'Van Gogh', artist: 'Vincent van Gogh', description: 'This is one of the masterpieces by Vincent van Gogh, showcasing his unique style and emotional honesty.', year: '2021'}, position: { x: -8.5, y: 5, z: 19.99 }, rotation: -Math.PI },
     { url: '/artworks/7.jpg', width: 10, height: 5, info: {title: 'Van Gogh', artist: 'Vincent van Gogh', description: 'This is one of the masterpieces by Vincent van Gogh, showcasing his unique style and emotional honesty.', year: '2021'}, position: { x: 8.5, y: 5, z: 19.99 }, rotation: -Math.PI },
+    { url: '/artworks/8.jpg', width: 10, height: 5, position: { x: 80, y: 5, z: -39.99 } }, // correct // left
+    { url: '/artworks/9.jpg', width: 10, height: 5, position: { x: 100, y: 5, z: -39.99 } }, // correct // left 
+    { url: '/artworks/10.jpg', width: 10, height: 5, position: { x: 80, y: 5, z: 39.99 }, rotation: -Math.PI }, // rigth ? correct
+    { url: '/artworks/11.jpg', width: 10, height: 5, position: { x: 100, y: 5, z: 39.99 }, rotation: -Math.PI }, // right correct
+    { url: '/artworks/12.jpg', width: 10, height: 9, position: { x: 114.99, y: 5, z: -13 }, rotation: -Math.PI / 2 },
+    { url: '/artworks/13.jpg', width: 7, height: 10, position: { x: 114.99, y: 5, z: 13 }, rotation: -Math.PI / 2 }, // this should be big back wall room 2
+    { url: '/artworks/14.jpg', width: 10, height: 5, position: { x: 65.1, y: 5, z: -20 }, rotation: Math.PI / 2 },
+    { url: '/artworks/15.jpg', width: 10, height: 5, position: { x: 65.1, y: 5, z: 20 }, rotation: Math.PI / 2 },
   ];
+
+ 
 
   let paintingObjects = [];
 
