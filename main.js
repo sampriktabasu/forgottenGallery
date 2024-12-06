@@ -5,7 +5,8 @@ import { createHallway } from './components/hallway.js';
 import { addLights } from './components/lighting.js';
 import { addPaintings } from './components/paintings.js';
 import { setupControls } from './components/controls.js';
-import { checkCollisions } from './components/collisions.js'
+import { checkCollisions } from './components/collisions.js';
+import { paintingClickHandling } from './components/raycasting.js';
 
 
 // Initialize Scene, Camera, and Renderer
@@ -31,7 +32,9 @@ addRoom2(scene);
 createHallway(scene);
 
 // Add Paintings
-addPaintings(scene);
+const paintingObjects = addPaintings(scene);
+
+paintingClickHandling(renderer, camera, paintingObjects);
 
 // Render Loop
 function render() {
