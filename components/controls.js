@@ -1,5 +1,4 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import * as THREE from 'three';
 
 // Set up camera controls (OrbitControls + custom key handling)
 export function setupControls(camera, domElement) {
