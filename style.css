@@ -147,16 +147,33 @@ canvas {
 .modal {
   display: none;
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  background: #fff8e8;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
   width: 90%;
+  border: 2px solid #d2c6ba;
+  background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
+  background-size: 150px;
+  font-family: 'Libre Baskerville', serif;
+}
+
+button:hover {
+  background: #735d54;
+}
+
+.modal div strong {
+  color: #6b5143;
+}
+
+.modal div {
+  margin: 10px 0;
+  font-size: 1.1em;
 }
 
 .modal-overlay {
@@ -170,9 +187,30 @@ canvas {
   z-index: 999;
 }
 
+/* Modal title */
 .modal-header {
+  font-size: 2.2em !important;
+  font-family: 'Cinzel Decorative', serif; /* Elegant font */
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #6b5143;
+  text-transform: uppercase; /* Stylish all-caps */
+}
+
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
   font-size: 1.5em;
-  margin-bottom: 10px;
+  color: #6b5143;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #8a766f;
 }
 
 .modal-close {
