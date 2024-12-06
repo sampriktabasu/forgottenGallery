@@ -11,11 +11,10 @@ export const paintingData = [
         // info about the painting
         title: `Van Gogh ${i + 1}`,
         artist: 'Vincent van Gogh',
-        description: `This is one of the masterpieces by Vincent van Gogh, showcasing his unique style and emotional honesty. Artwork ${
+        description: `This is one of the masterpieces by Vincent van Gogh, showcasing his unique style and emotional honesty. ${
           i + 1
         } perfectly encapsulates his love for the beauty of everyday life.`,
         year: `Year ${i + 1}`,
-        link: 'https://github.com/theringsofsaturn',
       },
     })),
 ]
