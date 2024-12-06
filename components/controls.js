@@ -1,9 +1,7 @@
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-// import { PointerLockControls } from 'three/examples/jsm/Addons.js';
 
 // Set up camera controls (OrbitControls + custom key handling)
 export function setupControls(camera, domElement) {
-  // const controls = new PointerLockControls(camera, domElement);
   const controls = new OrbitControls(camera, domElement);
 
   // Custom key movement controls

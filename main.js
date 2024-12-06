@@ -5,6 +5,7 @@ import { createHallway } from './components/hallway.js';
 import { addLights } from './components/lighting.js';
 import { addPaintings } from './components/paintings.js';
 import { setupControls } from './components/controls.js';
+import { checkCollisions } from './components/collisions.js'
 
 
 // Initialize Scene, Camera, and Renderer
@@ -40,6 +41,9 @@ function render() {
   const newTarget = camera.position.clone().add(direction); // Add the direction vector to the camera's position
   controls.target.copy(newTarget); // Update the controls target
   controls.update(); // Apply the update
+
+  // Check for collisions
+  checkCollisions(camera);
 
   renderer.render(scene, camera);
   requestAnimationFrame(render);
