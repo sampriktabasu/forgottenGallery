@@ -7,6 +7,7 @@ import { addPaintings } from './components/paintings.js';
 import { setupControls } from './components/controls.js';
 import { checkCollisions } from './components/collisions.js';
 import { paintingClickHandling } from './components/raycasting.js';
+import { createFrames } from './components/paintingFrames.js';
 
 
 // Initialize Scene, Camera, and Renderer
@@ -33,6 +34,9 @@ createHallway(scene);
 
 // Add Paintings
 const paintingObjects = addPaintings(scene);
+
+// add bounding boxes or frames to each of the paintings
+createFrames(paintingObjects);
 
 paintingClickHandling(renderer, camera, paintingObjects);
 
